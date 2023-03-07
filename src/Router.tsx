@@ -1,6 +1,7 @@
 import routerMeta from '@/lib/routerMeta';
 import { lazy, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { IRouter } from '@/interface/main';
 
 const lazyImport = (pageName: string) =>
   lazy(() => import(`@/pages/${pageName}`));
@@ -14,7 +15,7 @@ const assignedRouter = Object.keys(routerMeta).map((componentKey: string) => {
 
 const Router = () => (
   <Routes>
-    {assignedRouter.map(({ Component, props }: any) => (
+    {assignedRouter.map(({ Component, props }: IRouter) => (
       <Route
         key={props.path}
         path={props.path}
@@ -25,7 +26,10 @@ const Router = () => (
         }
       />
     ))}
-    <Route path="/*" element={<Navigate to="/todo" replace={true} />} />
+    <Route
+      path="/*"
+      element={<Navigate to={routerMeta.MainPage.path} replace={true} />}
+    />
   </Routes>
 );
 

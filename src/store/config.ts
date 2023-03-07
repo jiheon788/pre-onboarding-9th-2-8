@@ -1,6 +1,7 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import cartSlice from './slices/cartSlice';
+import { AppDispatchType, RootStateType } from '@/interface/main';
 
 const rootReducer = combineReducers({
   cart: cartSlice.reducer,
@@ -14,10 +15,7 @@ export const store = configureStore({
   enhancers: (defaultEnhancers) => [...defaultEnhancers],
 });
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
-
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
-export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<RootStateType> = useSelector;
+export const useAppDispatch = () => useDispatch<AppDispatchType>();
 
 export default store;

@@ -1,5 +1,7 @@
+import { ICartItem } from '@/interface/main';
+import { IProductCardProps } from '@/interface/props';
 import { useAppDispatch, useAppSelector } from '@/store/config';
-import { ICartItem, setCart } from '@/store/slices/cartSlice';
+import { setCart } from '@/store/slices/cartSlice';
 import {
   Card,
   CardBody,
@@ -14,10 +16,6 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import ProductModal from './ProductModal';
-
-interface IProductCardProps {
-  product: any;
-}
 
 const ProductCard = ({ product }: IProductCardProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();

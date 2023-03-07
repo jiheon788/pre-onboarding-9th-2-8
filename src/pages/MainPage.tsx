@@ -8,7 +8,6 @@ const MainPage = () => {
 
   useEffect(() => {
     getProducts().then((res) => {
-      console.log(res);
       setProducts(res.data);
     });
   }, []);

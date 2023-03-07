@@ -1,15 +1,5 @@
+import { ICart, ICartItem } from '@/interface/main';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-export interface ICartItem {
-  itemNo: number;
-  price: number;
-  quantity: number;
-  maxQuantity: number;
-}
-
-export interface ICart {
-  cart: ICartItem[];
-}
 
 const initialState: ICart = {
   cart: [],

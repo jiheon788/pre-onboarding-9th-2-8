@@ -1,12 +1,4 @@
-export interface IRouterMeta {
-  name?: string;
-  path: string;
-  isShow: boolean;
-}
-
-export type RouterMetaType = {
-  [key: string]: IRouterMeta;
-};
+import { RouterMetaType } from '@/interface/main';
 
 const routerMeta: RouterMetaType = {
   HomePage: {

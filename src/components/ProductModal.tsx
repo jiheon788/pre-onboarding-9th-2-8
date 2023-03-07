@@ -1,3 +1,4 @@
+import { IProductModalProps } from '@/interface/props';
 import {
   Modal,
   ModalOverlay,
@@ -12,12 +13,6 @@ import {
   Text,
   Badge,
 } from '@chakra-ui/react';
-
-interface IProductModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  product: any;
-}
 
 const ProductModal = ({ isOpen, onClose, product }: IProductModalProps) => {
   return (
