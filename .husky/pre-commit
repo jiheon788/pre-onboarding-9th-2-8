@@ -8,7 +8,7 @@ IRED='\033[0;91m'
 
 echo -e "\n${BLUE}husky pre-commit을 실행합니다.${NORMAL}\n"
 
-staged=$(git diff --cached --name-only) # git staged 파일들의 이름을 변수에 담고,
+staged=$(git diff --cached --name-only --diff-filter=d) # 삭제된 파일들은 제외하고 git staged 파일들의 이름을 변수에 담고,
 
 if [ -n "$staged" ]; then  # staged 된 파일이 존재 할 때,
   npx prettier --cache --list-different --write $staged # 캐쉬로 걸러준 뒤 formatted 된 것만 화면에 표시 해 준다.
