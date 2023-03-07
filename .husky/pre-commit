@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+NORMAL='\033[0m'
+BLUE='\033[0;34m'
+IGREEN='\033[0;92m'
+IRED='\033[0;91m'
+
+echo -e "\n${BLUE}husky pre-commit을 실행합니다.${NORMAL}\n"
+
+staged=$(git diff --cached --name-only) # git staged 파일들의 이름을 변수에 담고,
+
+if [ -n "$staged" ]; then  # staged 된 파일이 존재 할 때,
+  npx prettier --cache --list-different --write $staged # 캐쉬로 걸러준 뒤 formatted 된 것만 화면에 표시 해 준다.
+  git add $staged # formatted 된 파일들은 다시 수정 된 만큼 unstaged 상태에 있다. 따라서 다시 staged에 담아 준다.
+
+  echo -e "\nprettier 검사 및 수정이 완료되었습니다.\n"
+  echo "커밋 컨벤션 도움말   -> https://www.notion.so/commit-ebf0c8fbaf5e4428a49f266ae0d6fe39"
+  echo "히스토리 관리 도움말 -> https://www.notion.so/9f8c050fe074464186c53cc3001767f9?pvs=4"
+  echo -e "\n${BLUE}husky pre-commit을 종료합니다.${NORMAL}\n"
+else
+  echo -e "\n${BLUE}husky pre-commit을 종료합니다.${NORMAL}\n"
+fi
