@@ -11,6 +11,7 @@ import {
   Text,
   Badge,
   useDisclosure,
+  useToast,
 } from '@chakra-ui/react';
 import ProductModal from './ProductModal';
 
@@ -20,6 +21,7 @@ interface IProductCardProps {
 
 const ProductCard = ({ product }: IProductCardProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast = useToast();
   const { cart } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
 
@@ -32,6 +34,17 @@ const ProductCard = ({ product }: IProductCardProps) => {
     if (INDEX === -1) {
       tempCart.push({ itemNo, price, maxQuantity, quantity: 1 });
     } else {
+      if (tempCart[INDEX].quantity === tempCart[INDEX].maxQuantity) {
+        toast({
+          title: '구매 한도 초과',
+          description: `장바구니에 이미 ${tempCart[INDEX].quantity}개가 담겨 있습니다.`,
+          status: 'error',
+          duration: 9000,
+          isClosable: true,
+        });
+        return;
+      }
+
       tempCart[INDEX].quantity += 1;
     }
 
@@ -40,7 +53,6 @@ const ProductCard = ({ product }: IProductCardProps) => {
 
   return (
     <>
-      <button onClick={() => console.log(cart)}>cart</button>
       <Card>
         <CardBody onClick={onOpen}>
           <Image
