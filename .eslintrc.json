@@ -41,6 +41,7 @@
     //  Disallow specified global variables.
     "no-restricted-globals": "off",
     //  Enforce return statements in callbacks of array methods.
-    "array-callback-return": "off"
+    "array-callback-return": "off",
+    "prefer-const": "off"
   }
 }

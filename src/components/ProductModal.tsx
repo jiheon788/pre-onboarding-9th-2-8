@@ -20,7 +20,6 @@ interface IProductModalProps {
 }
 
 const ProductModal = ({ isOpen, onClose, product }: IProductModalProps) => {
-  console.log(product);
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />

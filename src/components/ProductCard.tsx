@@ -1,3 +1,5 @@
+import { useAppDispatch, useAppSelector } from '@/store/config';
+import { ICartItem, setCart } from '@/store/slices/cartSlice';
 import {
   Card,
   CardBody,
@@ -18,11 +20,29 @@ interface IProductCardProps {
 
 const ProductCard = ({ product }: IProductCardProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { cart } = useAppSelector((state) => state.cart);
+  const dispatch = useAppDispatch();
+
+  const onReserve = (itemNo: number, price: number, maxQuantity: number) => {
+    let tempCart = JSON.parse(JSON.stringify(cart));
+    const INDEX = tempCart.findIndex(
+      (tempItem: ICartItem) => tempItem.itemNo === itemNo,
+    );
+
+    if (INDEX === -1) {
+      tempCart.push({ itemNo, price, maxQuantity, quantity: 1 });
+    } else {
+      tempCart[INDEX].quantity += 1;
+    }
+
+    dispatch(setCart(tempCart));
+  };
 
   return (
     <>
-      <Card onClick={onOpen}>
-        <CardBody>
+      <button onClick={() => console.log(cart)}>cart</button>
+      <Card>
+        <CardBody onClick={onOpen}>
           <Image
             src={product.mainImage}
             alt={`${product.name} thumbnail`}
@@ -41,7 +61,13 @@ const ProductCard = ({ product }: IProductCardProps) => {
           </Stack>
         </CardBody>
         <CardFooter>
-          <Button variant="solid" colorScheme="teal">
+          <Button
+            variant="solid"
+            colorScheme="teal"
+            onClick={() =>
+              onReserve(product.idx, product.price, product.maximumPurchases)
+            }
+          >
             예약하기
           </Button>
         </CardFooter>
