@@ -10,6 +10,7 @@ import {
   Stack,
   Text,
   useToast,
+  Badge,
 } from '@chakra-ui/react';
 import { IProduct } from '@/interface/product';
 import { useAppDispatch, useAppSelector } from '@/store';
@@ -61,6 +62,12 @@ const Product = (productData: IProduct) => {
       <Stack>
         <CardBody>
           <Heading size="md">{productData.name}</Heading>
+          <Stack direction="row">
+            <Badge colorScheme="green">
+              {productData.price.toLocaleString()} 원
+            </Badge>
+            <Badge colorScheme="purple">{productData.spaceCategory}</Badge>
+          </Stack>
           <Text py="2">{productData.description}</Text>
         </CardBody>
         <CardFooter gap="5px">
