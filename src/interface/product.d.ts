@@ -1,11 +1,11 @@
 export interface IProduct {
-  idx: string;
+  idx: number;
   name: string;
   mainImage: string;
   description: string;
   spaceCategory: string;
-  price: string;
-  maximumPurchases: string;
+  price: number;
+  maximumPurchases: number;
   registrationDate: string;
 }
 
