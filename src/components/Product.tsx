@@ -69,6 +69,7 @@ const Product = (productData: IProduct) => {
             <Badge colorScheme="purple">{productData.spaceCategory}</Badge>
           </Stack>
           <Text py="2">{productData.description}</Text>
+          <Text py="2">등록번호 : {productData.idx}</Text>
         </CardBody>
         <CardFooter gap="5px">
           <Button

@@ -6,7 +6,7 @@ const getUniqueSpaces = (products: IProduct[]) => [
 
 export const generateBoolMappedObj = (products: IProduct[], bool: boolean) =>
   getUniqueSpaces(products).reduce((acc, cur) => {
-    return { ...acc, [cur]: true };
+    return { ...acc, [cur]: bool };
   }, {});
 
 export const getMaxPrice = (products: IProduct[]) =>

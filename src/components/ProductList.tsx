@@ -8,6 +8,7 @@ import {
   RangeSliderThumb,
   Tag,
   Stack,
+  Text,
 } from '@chakra-ui/react';
 import { getProducts } from '@/store/slices/productSlice';
 import Product from '@/components/Product';
@@ -24,7 +25,6 @@ const ProductList = () => {
     products: { products },
   } = useAppSelector((state: RootState) => state);
 
-  const [defaultValues, setDefaultValues] = useState<number[]>([]);
   const [currentValues, setCurrentValues] = useState<number[]>([]);
   const [spaceHashMap, setSpaceHashMap] = useState<{ [key: string]: boolean }>(
     {},
@@ -35,19 +35,13 @@ const ProductList = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    setDefaultValues([0, getMaxPrice(products)]);
+    setCurrentValues([0, getMaxPrice(products)]);
     setSpaceHashMap(generateBoolMappedObj(products, true));
   }, [products]);
 
-  useEffect(() => {
-    setCurrentValues(defaultValues);
-  }, [defaultValues]);
-
   const onSlidePrice = (event: number[]) => {
     setCurrentValues(
-      event.map((value) =>
-        Math.floor((value / 100) * defaultValues[1] + defaultValues[0]),
-      ),
+      event.map((value) => Math.floor((value / 100) * getMaxPrice(products))),
     );
   };
 
@@ -71,19 +65,16 @@ const ProductList = () => {
   return (
     <VStack as="section" bg="blue.100" w="75%" minW="500px" p={4}>
       <Heading>상품 정보</Heading>
-      {defaultValues[1] > 0 && (
-        <>
-          <RangeSlider defaultValue={[0, 100]} onChange={onSlidePrice}>
-            <RangeSliderTrack>
-              <RangeSliderFilledTrack />
-            </RangeSliderTrack>
-            <RangeSliderThumb index={0} />
-            <RangeSliderThumb index={1} />
-          </RangeSlider>
-          {currentValues[0]} {currentValues[1]}
-        </>
-      )}
-
+      <RangeSlider defaultValue={[0, 100]} onChange={onSlidePrice}>
+        <RangeSliderTrack>
+          <RangeSliderFilledTrack />
+        </RangeSliderTrack>
+        <RangeSliderThumb index={0} />
+        <RangeSliderThumb index={1} />
+      </RangeSlider>
+      <Text>
+        {currentValues[0]} {currentValues[1]}
+      </Text>
       <Stack direction="row">
         {Object.keys(spaceHashMap).map((spaceKey) => {
           return (
@@ -98,7 +89,6 @@ const ProductList = () => {
           );
         })}
       </Stack>
-
       {filteredProducts.map((product: IProduct) => (
         <Product key={product.idx} {...product} />
       ))}
