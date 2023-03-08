@@ -8,3 +8,9 @@ export interface IProduct {
   maximumPurchases: string;
   registrationDate: string;
 }
+
+export interface IProductReducer {
+  isLoading: boolean;
+  error: string | null;
+  products: IProduct[];
+}

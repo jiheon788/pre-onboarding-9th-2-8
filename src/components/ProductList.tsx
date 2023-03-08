@@ -7,7 +7,9 @@ import { RootState, useAppDispatch, useAppSelector } from '@/store';
 
 const ProductList = () => {
   const dispatch = useAppDispatch();
-  const { products } = useAppSelector((state: RootState) => state);
+  const {
+    products: { products },
+  } = useAppSelector((state: RootState) => state);
 
   useEffect(() => {
     dispatch(getProducts());
