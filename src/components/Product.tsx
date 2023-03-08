@@ -24,7 +24,7 @@ const Product = (productData: IProduct) => {
 
   const handleReservation = (product: IProduct) => {
     const productLength =
-      cart.filter((item) => item.idx === product.idx).length + 1;
+      cart.filter((item: IProduct) => item.idx === product.idx).length + 1;
 
     if (productLength <= Number(product.maximumPurchases)) {
       dispatch(addToCart(product));
