@@ -18,6 +18,7 @@ import {
   generateBoolMappedObj,
   getMaxPrice,
 } from '@/lib/utils/productsHelpers';
+import SpaceTag from './SpaceTag';
 
 const ProductList = () => {
   const dispatch = useAppDispatch();
@@ -65,30 +66,28 @@ const ProductList = () => {
   return (
     <VStack as="section" bg="blue.100" w="75%" minW="500px" p={4}>
       <Heading>상품 정보</Heading>
-      <RangeSlider defaultValue={[0, 100]} onChange={onSlidePrice}>
-        <RangeSliderTrack>
-          <RangeSliderFilledTrack />
-        </RangeSliderTrack>
-        <RangeSliderThumb index={0} />
-        <RangeSliderThumb index={1} />
-      </RangeSlider>
-      <Text>
-        {currentValues[0]} {currentValues[1]}
-      </Text>
-      <Stack direction="row">
-        {Object.keys(spaceHashMap).map((spaceKey) => {
-          return (
-            <Tag
+      <VStack as="section" bg="blue.100" w="100%" p={4}>
+        <RangeSlider defaultValue={[0, 100]} onChange={onSlidePrice}>
+          <RangeSliderTrack>
+            <RangeSliderFilledTrack />
+          </RangeSliderTrack>
+          <RangeSliderThumb index={0} />
+          <RangeSliderThumb index={1} />
+        </RangeSlider>
+        <Text>
+          {currentValues[0]} {currentValues[1]}
+        </Text>
+        <Stack direction="row">
+          {Object.keys(spaceHashMap).map((spaceKey) => (
+            <SpaceTag
               key={spaceKey}
-              variant={spaceHashMap[spaceKey] ? 'solid' : 'outline'}
-              colorScheme="blue"
-              onClick={() => onToggleSpace(spaceKey)}
-            >
-              {spaceKey}
-            </Tag>
-          );
-        })}
-      </Stack>
+              spaceKey={spaceKey}
+              spaceHashMap={spaceHashMap}
+              onToggleSpace={onToggleSpace}
+            />
+          ))}
+        </Stack>
+      </VStack>
       {filteredProducts.map((product: IProduct) => (
         <Product key={product.idx} {...product} />
       ))}
