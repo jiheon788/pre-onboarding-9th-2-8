@@ -9,11 +9,9 @@ import { ICartItem } from '@/interface/product';
 import { useAppDispatch } from '@/store';
 import { setCart } from '@/store/slices/cartSlice';
 import { Commands, Units } from '@/constants/system';
+import { ICartItemProps } from '@/interface/props';
 
-interface IQtyInputProps {
-  cartItem: ICartItem;
-}
-const QtyInput = ({ cartItem }: IQtyInputProps) => {
+const QtyInput = ({ cartItem }: ICartItemProps) => {
   const dispatch = useAppDispatch();
 
   const onControlQty = (product: ICartItem, commandType: string) => {

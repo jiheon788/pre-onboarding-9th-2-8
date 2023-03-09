@@ -1,14 +1,10 @@
-import { ICartItem } from '@/interface/product';
+import { ICartItemProps } from '@/interface/props';
 import { formatNumToWon } from '@/lib/utils/uiHelpers';
 import { Tr, Td, Button, useDisclosure } from '@chakra-ui/react';
 import AlertByDelete from './AlertByDelete';
 import QtyInput from './QtyInput';
 
-interface IReservationTableDataProps {
-  cartItem: ICartItem;
-}
-
-const ReservationTableData = ({ cartItem }: IReservationTableDataProps) => {
+const ReservationTableData = ({ cartItem }: ICartItemProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (

@@ -1,4 +1,3 @@
-import { ICartItem } from '@/interface/product';
 import {
   Button,
   AlertDialog,
@@ -11,12 +10,7 @@ import {
 import { useRef } from 'react';
 import { useAppDispatch } from '@/store';
 import { deleteItem } from '@/store/slices/cartSlice';
-
-interface IAlertByDeleteProps {
-  isOpen: boolean;
-  onClose: () => void;
-  cartItem: ICartItem;
-}
+import { IAlertByDeleteProps } from '@/interface/props';
 
 const AlertByDelete = ({ isOpen, onClose, cartItem }: IAlertByDeleteProps) => {
   const dispatch = useAppDispatch();
