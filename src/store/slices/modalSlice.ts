@@ -3,13 +3,13 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   isOpen: false,
   modalData: {
-    idx: '',
+    idx: 0,
     name: '',
     mainImage: '',
     description: '',
     spaceCategory: '',
-    price: '',
-    maximumPurchases: '',
+    price: 0,
+    maximumPurchases: 0,
     registrationDate: '',
   },
 };
@@ -25,13 +25,13 @@ const modalSlice = createSlice({
     onClose: (state) => {
       state.isOpen = false;
       state.modalData = {
-        idx: '',
+        idx: 0,
         name: '',
         mainImage: '',
         description: '',
         spaceCategory: '',
-        price: '',
-        maximumPurchases: '',
+        price: 0,
+        maximumPurchases: 0,
         registrationDate: '',
       };
     },

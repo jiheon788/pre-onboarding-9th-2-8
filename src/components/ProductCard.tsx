@@ -16,6 +16,7 @@ import { IProduct } from '@/interface/product';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { onOpen } from '@/store/slices/modalSlice';
 import { addToCart } from '@/store/slices/cartSlice';
+import { formatNumToWon } from '@/lib/utils/uiHelpers';
 
 const ProductCard = (productData: IProduct) => {
   const dispatch = useAppDispatch();
@@ -64,7 +65,7 @@ const ProductCard = (productData: IProduct) => {
           <Heading size="md">{productData.name}</Heading>
           <Stack direction="row">
             <Badge colorScheme="green">
-              {productData.price.toLocaleString()} 원
+              {formatNumToWon(productData.price)}
             </Badge>
             <Badge colorScheme="purple">{productData.spaceCategory}</Badge>
           </Stack>

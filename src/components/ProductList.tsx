@@ -18,6 +18,7 @@ import {
   getMaxPrice,
 } from '@/lib/utils/productsHelpers';
 import SpaceTag from './SpaceTag';
+import { formatNumToWon } from '@/lib/utils/uiHelpers';
 
 const ProductList = () => {
   const dispatch = useAppDispatch();
@@ -74,7 +75,8 @@ const ProductList = () => {
           <RangeSliderThumb index={1} />
         </RangeSlider>
         <Text>
-          {currentValues[0]} {currentValues[1]}
+          {formatNumToWon(currentValues[0])} ~{' '}
+          {formatNumToWon(currentValues[1])}
         </Text>
         <Stack direction="row">
           {Object.keys(spaceHashMap).map((spaceKey) => (
