@@ -10,6 +10,7 @@ import {
   Stack,
   Text,
   useToast,
+  Badge,
 } from '@chakra-ui/react';
 import { IProduct } from '@/interface/product';
 import { useAppDispatch, useAppSelector } from '@/store';
@@ -23,7 +24,7 @@ const Product = (productData: IProduct) => {
 
   const handleReservation = (product: IProduct) => {
     const productLength =
-      cart.filter((item) => item.idx === product.idx).length + 1;
+      cart.filter((item: IProduct) => item.idx === product.idx).length + 1;
 
     if (productLength <= Number(product.maximumPurchases)) {
       dispatch(addToCart(product));
@@ -61,7 +62,14 @@ const Product = (productData: IProduct) => {
       <Stack>
         <CardBody>
           <Heading size="md">{productData.name}</Heading>
+          <Stack direction="row">
+            <Badge colorScheme="green">
+              {productData.price.toLocaleString()} 원
+            </Badge>
+            <Badge colorScheme="purple">{productData.spaceCategory}</Badge>
+          </Stack>
           <Text py="2">{productData.description}</Text>
+          <Text py="2">등록번호 : {productData.idx}</Text>
         </CardBody>
         <CardFooter gap="5px">
           <Button
