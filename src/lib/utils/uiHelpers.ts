@@ -20,3 +20,17 @@ export const formatDate = (timeStamp: string) => {
 
 export const formatNumToWon = (pureNumber: number) =>
   `￦ ${pureNumber?.toLocaleString('ko-KR')}`;
+
+export const generateToastTemplate = (
+  title: string,
+  status: string,
+  description = '',
+) => {
+  return {
+    title,
+    description,
+    status,
+    position: 'top-right',
+    isClosable: true,
+  } as any;
+};

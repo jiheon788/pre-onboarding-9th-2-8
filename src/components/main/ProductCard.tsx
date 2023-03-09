@@ -16,7 +16,7 @@ import { IProduct } from '@/interface/product';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { onOpen } from '@/store/slices/modalSlice';
 import { setCart } from '@/store/slices/cartSlice';
-import { formatNumToWon } from '@/lib/utils/uiHelpers';
+import { formatNumToWon, generateToastTemplate } from '@/lib/utils/uiHelpers';
 import { Commands } from '@/constants/system';
 
 const ProductCard = (productData: IProduct) => {
@@ -26,17 +26,16 @@ const ProductCard = (productData: IProduct) => {
 
   const handleReservation = (product: IProduct) => {
     const { idx, name, price, maximumPurchases } = product;
-
     const matchedCartItem = cart.filter((cartItem) => cartItem.idx === idx)[0];
 
     if (!!matchedCartItem && matchedCartItem?.qty === matchedCartItem?.maxQty) {
-      toast({
-        title: `장바구니 담기 실패`,
-        description: `${matchedCartItem?.name}는 인당 ${matchedCartItem?.maxQty}개만 구매하실 수 있습니다.`,
-        position: 'top-right',
-        status: 'error',
-        isClosable: true,
-      });
+      toast(
+        generateToastTemplate(
+          `장바구니 담기 실패`,
+          'error',
+          `${matchedCartItem?.name}는 인당 ${matchedCartItem?.maxQty}개만 구매하실 수 있습니다.`,
+        ),
+      );
       return;
     }
 
@@ -49,13 +48,7 @@ const ProductCard = (productData: IProduct) => {
         commandType: matchedCartItem ? Commands.INCREASE : Commands.INITIALIZE,
       }),
     );
-
-    toast({
-      title: `${name} 장바구니 담기 성공`,
-      position: 'top-right',
-      status: 'success',
-      isClosable: true,
-    });
+    toast(generateToastTemplate(`${name} 장바구니 담기 성공`, 'success'));
   };
 
   return (
