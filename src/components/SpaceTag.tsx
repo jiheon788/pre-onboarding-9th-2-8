@@ -12,6 +12,7 @@ const SpaceTag = ({
       variant={spaceHashMap[spaceKey] ? 'solid' : 'outline'}
       colorScheme="blue"
       onClick={() => onToggleSpace(spaceKey)}
+      cursor="pointer"
     >
       {spaceKey}
     </Tag>

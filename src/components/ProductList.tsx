@@ -6,7 +6,6 @@ import {
   RangeSliderTrack,
   RangeSliderFilledTrack,
   RangeSliderThumb,
-  Tag,
   Stack,
   Text,
 } from '@chakra-ui/react';
