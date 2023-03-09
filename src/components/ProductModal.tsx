@@ -41,7 +41,7 @@ const ProductModal = () => {
             <Text py="2">{modalData.description}</Text>
             <Stack direction="row">
               <Badge colorScheme="green">
-                {formatNumToWon(modalData.price)} 원
+                {formatNumToWon(modalData.price)}
               </Badge>
               <Badge colorScheme="purple">{modalData.spaceCategory}</Badge>
               <Badge colorScheme="red">

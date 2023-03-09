@@ -14,3 +14,11 @@ export interface IProductReducer {
   error: string | null;
   products: IProduct[];
 }
+
+export interface ICartItem {
+  idx: number;
+  price: number;
+  qty: number;
+  maxQty: number;
+  name: string;
+}
