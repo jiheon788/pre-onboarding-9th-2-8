@@ -1,3 +1,4 @@
+import { Commands, NON_EXIST, Units } from '@/constants/system';
 import { ICartItem } from '@/interface/product';
 import { createSlice } from '@reduxjs/toolkit';
 
@@ -10,29 +11,29 @@ export const cartSlice = createSlice({
     setCart(state, action) {
       const { idx, name, price, maximumPurchases, commandType } =
         action.payload;
-      const INDEX = state.findIndex(
+      const targetIndex = state.findIndex(
         (tempItem: ICartItem) => tempItem.idx === idx,
       );
 
       switch (commandType) {
-        case 'INCREASE':
-          if (INDEX === -1) {
+        case Commands.INCREASE:
+          if (targetIndex === NON_EXIST) {
             state.push({
               idx,
               name,
               price,
               maxQty: maximumPurchases,
-              qty: 1,
+              qty: Units.QTY_DEFAULT,
             });
           } else {
-            if (state[INDEX].qty >= state[INDEX].maxQty) return;
-            state[INDEX].qty += 1;
+            if (state[targetIndex].qty >= state[targetIndex].maxQty) return;
+            state[targetIndex].qty += Units.QTY_STEP;
           }
           break;
-        case 'DECREASE':
-          if (INDEX === -1) return;
-          if (state[INDEX].qty <= 1) return;
-          state[INDEX].qty -= 1;
+        case Commands.DECREASE:
+          if (targetIndex === NON_EXIST) return;
+          if (state[targetIndex].qty <= Units.QTY_DEFAULT) return;
+          state[targetIndex].qty -= Units.QTY_STEP;
           break;
         default:
           break;

@@ -17,6 +17,7 @@ import { useAppDispatch, useAppSelector } from '@/store';
 import { onOpen } from '@/store/slices/modalSlice';
 import { setCart } from '@/store/slices/cartSlice';
 import { formatNumToWon } from '@/lib/utils/uiHelpers';
+import { Commands } from '@/constants/system';
 
 const ProductCard = (productData: IProduct) => {
   const dispatch = useAppDispatch();
@@ -44,7 +45,7 @@ const ProductCard = (productData: IProduct) => {
         name,
         price,
         maximumPurchases,
-        commandType: 'INCREASE',
+        commandType: Commands.INCREASE,
       }),
     );
     toast({

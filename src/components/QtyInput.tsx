@@ -8,6 +8,7 @@ import {
 import { ICartItem } from '@/interface/product';
 import { useAppDispatch } from '@/store';
 import { setCart } from '@/store/slices/cartSlice';
+import { Commands, Units } from '@/constants/system';
 
 interface IQtyInputProps {
   cartItem: ICartItem;
@@ -32,16 +33,16 @@ const QtyInput = ({ cartItem }: IQtyInputProps) => {
     <NumberInput
       size="sm"
       defaultValue={cartItem.qty}
-      min={1}
+      min={Units.QTY_DEFAULT}
       max={cartItem.maxQty}
     >
       <NumberInputField />
       <NumberInputStepper>
         <NumberIncrementStepper
-          onClick={() => onControlQty(cartItem, 'INCREASE')}
+          onClick={() => onControlQty(cartItem, Commands.INCREASE)}
         />
         <NumberDecrementStepper
-          onClick={() => onControlQty(cartItem, 'DECREASE')}
+          onClick={() => onControlQty(cartItem, Commands.DECREASE)}
         />
       </NumberInputStepper>
     </NumberInput>
