@@ -1,4 +1,5 @@
 import { ICartItem } from '@/interface/product';
+import { formatNumToWon } from '@/lib/utils/uiHelpers';
 import { Tr, Td, Button, useDisclosure } from '@chakra-ui/react';
 import AlertByDelete from './AlertByDelete';
 import QtyInput from './QtyInput';
@@ -14,7 +15,7 @@ const ReservationTableData = ({ cartItem }: IReservationTableDataProps) => {
     <Tr>
       <Td>{cartItem.idx}</Td>
       <Td>{cartItem.name}</Td>
-      <Td isNumeric>{cartItem.price}</Td>
+      <Td isNumeric>{formatNumToWon(cartItem.price)}</Td>
       <Td>
         <QtyInput cartItem={cartItem}></QtyInput>
       </Td>

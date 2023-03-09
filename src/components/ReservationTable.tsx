@@ -10,7 +10,7 @@ import {
 import { useAppSelector } from '@/store';
 import ReservationTableData from './ReservationTableData';
 import { formatNumToWon } from '@/lib/utils/uiHelpers';
-import { getTotalPaymentAmount } from '@/lib/utils/cartHelper';
+import { getTotalPaymentAmount, getTotalQty } from '@/lib/utils/cartHelpers';
 
 const ReservationTable = () => {
   const { cart } = useAppSelector((state) => state);
@@ -20,11 +20,11 @@ const ReservationTable = () => {
       <Table variant="simple">
         <Thead>
           <Tr>
-            <Th>No.</Th>
-            <Th>Name</Th>
-            <Th isNumeric>Price</Th>
-            <Th>Qty</Th>
-            <Th>Delete</Th>
+            <Th>상품번호</Th>
+            <Th>이름</Th>
+            <Th isNumeric>가격</Th>
+            <Th>구매 수량</Th>
+            <Th></Th>
           </Tr>
         </Thead>
         <Tbody>
@@ -34,10 +34,10 @@ const ReservationTable = () => {
         </Tbody>
         <Tfoot>
           <Tr>
-            <Th isNumeric>총 결제 금액</Th>
-            <Th isNumeric></Th>
-            <Th isNumeric>{formatNumToWon(getTotalPaymentAmount(cart))}</Th>
-            <Th isNumeric></Th>
+            <Th></Th>
+            <Th isNumeric>TOTAL</Th>
+            <Th>{formatNumToWon(getTotalPaymentAmount(cart))}</Th>
+            <Th>{getTotalQty(cart)} 개</Th>
           </Tr>
         </Tfoot>
       </Table>
