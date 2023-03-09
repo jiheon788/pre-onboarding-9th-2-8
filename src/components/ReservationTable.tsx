@@ -1,20 +1,5 @@
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
-  TableContainer,
-  Button,
-  useDisclosure,
-} from '@chakra-ui/react';
-import { useAppDispatch, useAppSelector } from '@/store';
-import { useEffect, useState } from 'react';
-import { deleteItem } from '@/store/slices/cartSlice';
-import AlertByDelete from './AlertByDelete';
+import { Table, Thead, Tbody, Tr, Th, TableContainer } from '@chakra-ui/react';
+import { useAppSelector } from '@/store';
 import ReservationTableData from './ReservationTableData';
 
 const ReservationTable = () => {
@@ -25,7 +10,7 @@ const ReservationTable = () => {
       <Table variant="simple">
         <Thead>
           <Tr>
-            <Th>Product No.</Th>
+            <Th>No.</Th>
             <Th>Name</Th>
             <Th isNumeric>Price</Th>
             <Th>Qty</Th>

@@ -15,7 +15,7 @@ import {
 import { IProduct } from '@/interface/product';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { onOpen } from '@/store/slices/modalSlice';
-import { addToCart } from '@/store/slices/cartSlice';
+import { setCart } from '@/store/slices/cartSlice';
 import { formatNumToWon } from '@/lib/utils/uiHelpers';
 
 const ProductCard = (productData: IProduct) => {
@@ -24,9 +24,9 @@ const ProductCard = (productData: IProduct) => {
   const toast = useToast();
 
   const handleReservation = (product: IProduct) => {
-    const matchedCartItem = cart.filter(
-      (cartItem) => cartItem.idx === product.idx,
-    )[0];
+    const { idx, name, price, maximumPurchases } = product;
+
+    const matchedCartItem = cart.filter((cartItem) => cartItem.idx === idx)[0];
 
     if (!!matchedCartItem && matchedCartItem?.qty === matchedCartItem?.maxQty) {
       toast({
@@ -38,9 +38,17 @@ const ProductCard = (productData: IProduct) => {
       });
       return;
     }
-    dispatch(addToCart(product));
+    dispatch(
+      setCart({
+        idx,
+        name,
+        price,
+        maximumPurchases,
+        commandType: 'INCREASE',
+      }),
+    );
     toast({
-      title: `${product.name} 장바구니 담기 성공`,
+      title: `${name} 장바구니 담기 성공`,
       position: 'top-right',
       status: 'success',
       isClosable: true,

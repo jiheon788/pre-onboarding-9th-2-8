@@ -7,27 +7,36 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addToCart(state, action) {
-      const { idx, name, price, maximumPurchases } = action.payload;
-      const copiedState = JSON.parse(JSON.stringify(state));
-      const INDEX = copiedState.findIndex(
+    setCart(state, action) {
+      const { idx, name, price, maximumPurchases, commandType } =
+        action.payload;
+      const INDEX = state.findIndex(
         (tempItem: ICartItem) => tempItem.idx === idx,
       );
 
-      if (INDEX === -1) {
-        copiedState.push({
-          idx,
-          name,
-          price,
-          maxQty: maximumPurchases,
-          qty: 1,
-        });
-      } else {
-        if (copiedState[INDEX].qty === copiedState[INDEX].maxQty) return;
-        copiedState[INDEX].qty += 1;
+      switch (commandType) {
+        case 'INCREASE':
+          if (INDEX === -1) {
+            state.push({
+              idx,
+              name,
+              price,
+              maxQty: maximumPurchases,
+              qty: 1,
+            });
+          } else {
+            if (state[INDEX].qty >= state[INDEX].maxQty) return;
+            state[INDEX].qty += 1;
+          }
+          break;
+        case 'DECREASE':
+          if (INDEX === -1) return;
+          if (state[INDEX].qty <= 1) return;
+          state[INDEX].qty -= 1;
+          break;
+        default:
+          break;
       }
-
-      return copiedState;
     },
     deleteItem(state, action) {
       return state.filter((item) => item.idx !== action.payload);
@@ -35,6 +44,6 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, deleteItem } = cartSlice.actions;
+export const { setCart, deleteItem } = cartSlice.actions;
 
 export default cartSlice.reducer;
