@@ -1,6 +1,7 @@
 export const Commands = {
   INCREASE: 'increase',
   DECREASE: 'decrease',
+  INITIALIZE: 'initialize ',
 };
 
 export const Units = {

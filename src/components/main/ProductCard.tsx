@@ -39,15 +39,17 @@ const ProductCard = (productData: IProduct) => {
       });
       return;
     }
+
     dispatch(
       setCart({
         idx,
         name,
         price,
         maximumPurchases,
-        commandType: Commands.INCREASE,
+        commandType: matchedCartItem ? Commands.INCREASE : Commands.INITIALIZE,
       }),
     );
+
     toast({
       title: `${name} 장바구니 담기 성공`,
       position: 'top-right',

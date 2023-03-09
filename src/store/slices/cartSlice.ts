@@ -16,25 +16,27 @@ export const cartSlice = createSlice({
       );
 
       switch (commandType) {
-        case Commands.INCREASE:
-          if (targetIndex === NON_EXIST) {
-            state.push({
-              idx,
-              name,
-              price,
-              maxQty: maximumPurchases,
-              qty: Units.QTY_DEFAULT,
-            });
-          } else {
-            if (state[targetIndex].qty >= state[targetIndex].maxQty) return;
-            state[targetIndex].qty += Units.QTY_STEP;
-          }
+        case Commands.INITIALIZE:
+          state.push({
+            idx,
+            name,
+            price,
+            maxQty: maximumPurchases,
+            qty: Units.QTY_DEFAULT,
+          });
           break;
+
+        case Commands.INCREASE:
+          if (state[targetIndex].qty >= state[targetIndex].maxQty) return;
+          state[targetIndex].qty += Units.QTY_STEP;
+          break;
+
         case Commands.DECREASE:
           if (targetIndex === NON_EXIST) return;
           if (state[targetIndex].qty <= Units.QTY_DEFAULT) return;
           state[targetIndex].qty -= Units.QTY_STEP;
           break;
+
         default:
           break;
       }
