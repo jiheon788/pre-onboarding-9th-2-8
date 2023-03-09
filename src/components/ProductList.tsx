@@ -10,7 +10,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { getProducts } from '@/store/slices/productSlice';
-import Product from '@/components/Product';
+import Product from '@/components/ProductCard';
 import { IProduct } from '@/interface/product';
 import { RootState, useAppDispatch, useAppSelector } from '@/store';
 import {
