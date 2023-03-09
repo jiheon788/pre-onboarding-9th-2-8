@@ -1,4 +1,4 @@
-import ReservationTable from '@/components/ReservationTable';
+import ReservationTable from '@/components/reservations/ReservationTable';
 import { Center, VStack, Heading } from '@chakra-ui/react';
 
 const Reservations = () => {
