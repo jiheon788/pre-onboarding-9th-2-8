@@ -9,21 +9,20 @@ import {
   TableCaption,
   TableContainer,
   Button,
+  useDisclosure,
 } from '@chakra-ui/react';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { useEffect, useState } from 'react';
+import { deleteItem } from '@/store/slices/cartSlice';
+import AlertByDelete from './AlertByDelete';
+import ReservationTableData from './ReservationTableData';
 
 const ReservationTable = () => {
   const { cart } = useAppSelector((state) => state);
 
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
-
   return (
     <TableContainer>
       <Table variant="simple">
-        <TableCaption>Imperial to metric conversion factors</TableCaption>
         <Thead>
           <Tr>
             <Th>Product No.</Th>
@@ -35,28 +34,9 @@ const ReservationTable = () => {
         </Thead>
         <Tbody>
           {cart.map((cartItem) => (
-            <Tr key={cartItem.idx}>
-              <Td>{cartItem.idx}</Td>
-              <Td>{cartItem.name}</Td>
-              <Td isNumeric>{cartItem.price}</Td>
-              <Td>
-                {cartItem.qty} / {cartItem.maxQty}
-              </Td>
-              <Td>
-                <Button colorScheme="red" size="sm">
-                  Delete
-                </Button>
-              </Td>
-            </Tr>
+            <ReservationTableData key={cartItem.idx} cartItem={cartItem} />
           ))}
         </Tbody>
-        <Tfoot>
-          <Tr>
-            <Th>To convert</Th>
-            <Th>into</Th>
-            <Th isNumeric>multiply by</Th>
-          </Tr>
-        </Tfoot>
       </Table>
     </TableContainer>
   );

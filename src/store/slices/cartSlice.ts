@@ -29,9 +29,12 @@ export const cartSlice = createSlice({
 
       return copiedState;
     },
+    deleteItem(state, action) {
+      return state.filter((item) => item.idx !== action.payload);
+    },
   },
 });
 
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, deleteItem } = cartSlice.actions;
 
 export default cartSlice.reducer;
