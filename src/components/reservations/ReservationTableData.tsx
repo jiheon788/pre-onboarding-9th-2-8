@@ -9,15 +9,22 @@ const ReservationTableData = ({ cartItem }: ICartItemProps) => {
 
   return (
     <Tr>
-      <Td>{cartItem.idx}</Td>
-      <Td>{cartItem.name}</Td>
+      <Td textAlign="center">{cartItem.idx}</Td>
+      <Td textAlign="center">{cartItem.name}</Td>
       <Td isNumeric>{formatNumToWon(cartItem.price)}</Td>
       <Td>
         <QtyInput cartItem={cartItem}></QtyInput>
       </Td>
       <Td>
-        <Button type="button" colorScheme="red" size="sm" onClick={onOpen}>
-          Delete
+        <Button
+          type="button"
+          bg="red.400"
+          color="white"
+          _hover={{ bg: 'red.600' }}
+          size="md"
+          onClick={onOpen}
+        >
+          삭 제
         </Button>
         <AlertByDelete isOpen={isOpen} onClose={onClose} cartItem={cartItem} />
       </Td>

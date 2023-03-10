@@ -29,21 +29,23 @@ const AlertByDelete = ({ isOpen, onClose, cartItem }: IAlertByDeleteProps) => {
       <AlertDialogOverlay>
         <AlertDialogContent>
           <AlertDialogHeader fontSize="lg" fontWeight="bold">
-            Delete {cartItem.name}
+            {cartItem.name}
           </AlertDialogHeader>
 
           <AlertDialogBody>정말 지우시겠습니까?</AlertDialogBody>
 
           <AlertDialogFooter>
             <Button ref={cancelRef} onClick={onClose}>
-              Cancel
+              취 소
             </Button>
             <Button
-              colorScheme="red"
+              bg="red.400"
+              color="white"
+              _hover={{ bg: 'red.600' }}
               onClick={() => onDeleteItem(cartItem.idx)}
               ml={3}
             >
-              Delete
+              삭 제
             </Button>
           </AlertDialogFooter>
         </AlertDialogContent>

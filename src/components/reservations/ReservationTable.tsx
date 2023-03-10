@@ -5,6 +5,7 @@ import {
   Tr,
   Th,
   TableContainer,
+  Text,
   Tfoot,
 } from '@chakra-ui/react';
 import { useAppSelector } from '@/store';
@@ -16,14 +17,14 @@ const ReservationTable = () => {
   const { cart } = useAppSelector((state) => state);
 
   return (
-    <TableContainer>
+    <TableContainer w="100%">
       <Table variant="simple">
         <Thead>
           <Tr>
-            <Th>상품번호</Th>
-            <Th>이름</Th>
+            <Th textAlign="center">상품번호</Th>
+            <Th textAlign="center">이름</Th>
             <Th isNumeric>가격</Th>
-            <Th>구매 수량</Th>
+            <Th textAlign="center">구매 수량</Th>
             <Th></Th>
           </Tr>
         </Thead>
@@ -34,10 +35,19 @@ const ReservationTable = () => {
         </Tbody>
         <Tfoot>
           <Tr>
+            <Th textAlign="center" pt="5">
+              <Text fontSize="xl">TOTAL</Text>
+            </Th>
             <Th></Th>
-            <Th isNumeric>TOTAL</Th>
-            <Th>{formatNumToWon(getTotalPaymentAmount(cart))}</Th>
-            <Th>{getTotalQty(cart)} 개</Th>
+            <Th textAlign="end" pt="5">
+              <Text fontSize="xl">
+                {formatNumToWon(getTotalPaymentAmount(cart))}{' '}
+              </Text>
+            </Th>
+            <Th textAlign="center" pt="5">
+              <Text fontSize="xl">{getTotalQty(cart)} 개</Text>
+            </Th>
+            <Th></Th>
           </Tr>
         </Tfoot>
       </Table>

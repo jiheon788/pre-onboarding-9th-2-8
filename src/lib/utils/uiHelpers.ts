@@ -30,7 +30,7 @@ export const generateToastTemplate = (
     title,
     description,
     status,
-    position: 'top-right',
+    position: 'bottom-right',
     isClosable: true,
   } as any;
 };

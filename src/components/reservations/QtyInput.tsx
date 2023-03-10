@@ -29,7 +29,9 @@ const QtyInput = ({ cartItem }: ICartItemProps) => {
 
   return (
     <NumberInput
-      size="sm"
+      minW="100px"
+      maxW="150px"
+      mx="auto"
       defaultValue={cartItem.qty}
       min={Units.QTY_DEFAULT}
       max={cartItem.maxQty}
