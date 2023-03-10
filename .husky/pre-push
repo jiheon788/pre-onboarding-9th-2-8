@@ -6,16 +6,16 @@ BLUE='\033[0;34m'
 IGREEN='\033[0;92m'
 IRED='\033[0;91m'
 
-trap "rm -f lintResult.txt totalExcludeList.txt changedList.txt" EXIT # 스크립트로 생성되는 임시 파일 반드시 삭제
+trap "rm -f lintResult.txt totalExcludeList.txt changedList.txt tempError.txt tempResult.txt" EXIT # 스크립트로 생성되는 임시 파일 반드시 삭제
 
 echo -e "\n${BLUE}husky pre-push를 실행합니다.${NORMAL}\n"
 
 defaultExcludeList=$(cat .eslintignore) # 기본적인 eslint ignore 파일을 변수에 담고,
 excludeList=$(git diff --name-only && git ls-files --others --exclude-standard) # untracked, unstaged 파일을 변수에 담고,
-echo "$defaultExcludeList$excludeList" > totalExcludeList.txt # 위 둘을 합쳐서 종합적인 eslint ignore 파일을 만든다.
+echo -e "$defaultExcludeList\n$excludeList" > totalExcludeList.txt # 위 둘을 합쳐서 종합적인 eslint ignore 파일을 만든다.
 
 # 캐쉬로 걸러준 뒤 위에서 만든 종합적인 eslint ignore 파일로 무시할 것을 정한다. 린트 결과를 확인하고, 그 결과를 임시 파일을 생성해 담는다.
-npx eslint --cache --ignore-path totalExcludeList.txt . --output-file lintResult.txt
+npx eslint --cache --ignore-path totalExcludeList.txt . --output-file lintResult.txt 2> tempError.txt | tee tempResult.txt
 
 if [ -s lintResult.txt ]; then  # 린트 결과가 존재한다면,
   cat lintResult.txt  # 린트 결과가 담긴 파일을 출력해준다.
