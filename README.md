@@ -1,4 +1,17 @@
-## 👨‍💻팀원 소개
+# 원티드 프리온보딩 인턴쉽 2주차 과제
+
+> [Travel Tech 스타트업 라이크어로컬 기업](https://likealocal.co.kr/) 과제 입니다.
+
+## [🔗 결과 링크](배포주소)
+
+https://pre-onboarding-9th-2-8.netlify.app/
+
+## 📝 과제 목적
+
+- 여행 상품 리스트를 보고 장바구니에 저장할 수 있는 사이트 구현
+- Best Practice 만들어 제출하기
+
+## 👨‍💻 팀원 소개
 
 <table border>
   <tbody>
@@ -65,21 +78,21 @@
   </tbody>
 </table>
 
-## 🤝협업 툴
+## 📷 DEMO
 
-- Discord
-- Notion
-- Github
-- Figma
+#### 예약하기 기능
 
-## 📝과제 목적
+![](https://velog.velcdn.com/images/hyorimm/post/6fa2f2c5-d6ae-4f02-9855-c60bb839f007/image.gif)
 
-- 여행 상품 리스트를 보고 장바구니에 저장할 수 있는 사이트 구현
-- Best Practice 만들어 제출하기
+#### 다중 필터링 기능
 
-## 🔗[배포주소]
+![](https://velog.velcdn.com/images/hyorimm/post/95ec840f-49bc-4885-aed5-77988cd6b4e9/image.gif)
 
-## ⚙️설치 및 실행 가이드
+#### 장바구니 기능
+
+![](https://velog.velcdn.com/images/hyorimm/post/bad2bf0e-01f8-4927-a69c-a284c8dc62b1/image.gif)
+
+## ⚙️ 설치 및 실행 가이드
 
 #### Install
 
@@ -99,7 +112,7 @@ npm run build
 npm start
 ```
 
-## 🚀기능
+## 🚀 기능
 
 ### 메인 페이지
 
@@ -113,17 +126,9 @@ npm start
 - 장바구니 내부 여행 상품 조회
 - 장바구니 내부 여행 상품 삭제
 - 장바구니 내부 여행 상품의 구매 수량 변경
-- 장바구니 내부 여행 상품의 총 결제액,  총 상품 개수를 계산하여 표시
+- 장바구니 내부 여행 상품의 총 결제액, 총 상품 개수를 계산하여 표시
 
-### DEMO
-#### 예약하기 기능
-![](https://velog.velcdn.com/images/hyorimm/post/6fa2f2c5-d6ae-4f02-9855-c60bb839f007/image.gif)
-#### 다중 필터링 기능
-![](https://velog.velcdn.com/images/hyorimm/post/95ec840f-49bc-4885-aed5-77988cd6b4e9/image.gif)
-#### 장바구니 기능
-![](https://velog.velcdn.com/images/hyorimm/post/bad2bf0e-01f8-4927-a69c-a284c8dc62b1/image.gif)
-
-## ✨기술 스택
+## ✨ 기술 스택
 
 - React
 - Typescript
@@ -134,17 +139,24 @@ npm start
 - emotion
 - craco → webpack 설정을 확장하기 위해 사용하였습니다. Path Alias를 사용합니다
 
-## ✅과제 진행 방법
+## 🤝 협업 툴
+
+- Discord
+- Notion
+- Github
+- Figma
+
+## ✅ 과제 진행 방법
 
 [기능 구현 목록](./REQUIREMENTS.md)을 작성 후 아래와 같이 분류하였습니다.
 
-1. **main page 구현** 
-2. **상품 필터 기능 구현** 
-3. **reservations page 구현** 
+1. **main page 구현**
+2. **상품 필터 기능 구현**
+3. **reservations page 구현**
 
 분류에 따라 팀원 개개인이 과제를 수행했습니다. 리뷰 시간을 정하여 해당 시간에 PR에서 코드리뷰를 했습니다. 투표를 통해 Best Practice를 선정한 후, 다른 과제 중 좋았던 구현들을 의논하여 추가하였습니다.  [이슈](https://github.com/Wanted-PreOnboarding-Team-8/pre-onboarding-9th-2-8/issues)와 [PR메시지](https://github.com/Wanted-PreOnboarding-Team-8/pre-onboarding-9th-2-8/pulls)를 활용하여 문서화하였습니다.
 
-## 🌟Best Practice Process
+## 🌟 Best Practice Process
 
 **Mar 8, 2023**  　|　[main page 구현](https://github.com/Wanted-PreOnboarding-Team-8/pre-onboarding-9th-2-8/pull/12)
 
@@ -157,7 +169,7 @@ npm start
 **Mar 9, 2023** 　|　[여행 상품 filter 구현](https://github.com/Wanted-PreOnboarding-Team-8/pre-onboarding-9th-2-8/pull/18)
 
 - 필터링에 사용되는 항목들을 utils로 묶어서 코드 분리한 점
-- 전역적으로 관리할 필요가 없는 항목에 대해 useState와 useEffect로 상품 필터 기능을 구현한 것 
+- 전역적으로 관리할 필요가 없는 항목에 대해 useState와 useEffect로 상품 필터 기능을 구현한 것
 - 공간 필터 버튼의 토글 기능을 통한 여러 조건의 필터링이 가능한 점
 - 관심사의 분리가 잘 되서 좋은 가독성
 
@@ -172,12 +184,11 @@ npm start
 - 적절한 커밋 태그와 추가적인 설명이 필요하면 작성한 커밋 본문
 - 중복되는 코드를 템플릿화 하여 줄임(toast 템플릿 생성기)
 
-## 🐞이슈 및 버그
+## 🐞 이슈 및 버그
 
 **Mar 7, 2023**  　|　[상태 관리 툴 사용 유무](https://github.com/Wanted-PreOnboarding-Team-8/pre-onboarding-9th-2-8/issues/7)
 
-
-## 🗂️파일 구조
+## 🗂️ 파일 구조
 
 ```
 src
