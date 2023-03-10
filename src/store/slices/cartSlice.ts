@@ -12,7 +12,7 @@ export const cartSlice = createSlice({
       const { idx, name, price, maximumPurchases, commandType } =
         action.payload;
       const targetIndex = state.findIndex(
-        (tempItem: ICartItem) => tempItem.idx === idx,
+        (targetItem: ICartItem) => targetItem.idx === idx,
       );
 
       switch (commandType) {
