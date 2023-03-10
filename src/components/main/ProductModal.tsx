@@ -3,14 +3,15 @@ import { useAppSelector } from '@/store';
 import { onClose } from '@/store/slices/modalSlice';
 import {
   Badge,
+  Box,
   Button,
   Center,
+  Heading,
   Image,
   Modal,
   ModalBody,
   ModalContent,
   ModalFooter,
-  ModalHeader,
   ModalOverlay,
   Stack,
   Text,
@@ -28,36 +29,55 @@ const ProductModal = () => {
       <Modal isOpen={isOpen} onClose={() => dispatch(onClose())}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>{modalData.name}</ModalHeader>
+          <Box
+            position="absolute"
+            bg="white"
+            borderRadius="2px"
+            w="20px"
+            top="45px"
+            left="8"
+            textAlign="center"
+            fontWeight="bold"
+          >
+            {modalData.idx}
+          </Box>
+          <Text position="absolute" top="2" right="6">
+            {formatDate(modalData.registrationDate)}
+          </Text>
           <ModalBody>
             <Center>
               <Image
                 objectFit="cover"
-                maxW={{ base: '100%', sm: '200px' }}
+                w="100%"
+                mt="7"
                 src={modalData.mainImage}
                 alt={modalData.name}
               />
             </Center>
-            <Text py="2">{modalData.description}</Text>
-            <Stack direction="row">
-              <Badge colorScheme="green">
-                {formatNumToWon(modalData.price)}
-              </Badge>
-              <Badge colorScheme="purple">{modalData.spaceCategory}</Badge>
+            <Stack direction="row" mt="3" mb="2">
+              <Badge bg="#FFF1DC">{modalData.spaceCategory}</Badge>
               <Badge colorScheme="red">
                 인 당 {modalData.maximumPurchases}개 구매 제한
               </Badge>
             </Stack>
+            <Heading fontSize="lg">{modalData.name}</Heading>
+            <Text py="1" fontSize="md">
+              {modalData.description}
+            </Text>
+            <Box fontSize="lg" fontWeight="bold">
+              {formatNumToWon(modalData.price)}
+            </Box>
           </ModalBody>
-          <ModalFooter justifyContent="space-between">
-            <Text>{formatDate(modalData.registrationDate)}</Text>
-            <Text>등록번호 : {modalData.idx}</Text>
+          <ModalFooter justifyContent="center">
             <Button
               colorScheme="blue"
-              mr={3}
               onClick={() => dispatch(onClose())}
+              size="md"
+              bg="#789BFB"
+              color="white"
+              _hover={{ bg: '#789bfbb5' }}
             >
-              Close
+              닫 기
             </Button>
           </ModalFooter>
         </ModalContent>

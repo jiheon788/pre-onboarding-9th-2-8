@@ -10,7 +10,8 @@ const SpaceTag = ({
     <Tag
       key={spaceKey}
       variant={spaceHashMap[spaceKey] ? 'solid' : 'outline'}
-      colorScheme="blue"
+      bg={spaceHashMap[spaceKey] ? '#FFF1DC' : 'white'}
+      color="black"
       onClick={() => onToggleSpace(spaceKey)}
       cursor="pointer"
     >
