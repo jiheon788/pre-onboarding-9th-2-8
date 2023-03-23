@@ -5,6 +5,8 @@
 원티드 프리온보딩 인턴쉽 - [Travel Tech 스타트업 라이크어로컬 기업](https://likealocal.co.kr/) 과제 입니다.  
 이 프로젝트는 [CRA + TypeScript 템플릿](https://create-react-app.dev/docs/adding-typescript/)으로 제작되었습니다.
 
+<br/>
+
 ## 과제 목적
 
 - 여행 상품 리스트를 보고 장바구니에 저장할 수 있는 사이트 구현
@@ -20,6 +22,8 @@
 
 분류에 따라 팀원 개개인이 과제를 수행했습니다. PR에서 코드 리뷰를 진행 후. 투표를 통해 Best Practice를 선정 했습니다. [이슈](https://github.com/Wanted-PreOnboarding-Team-8/pre-onboarding-9th-2-8/issues)와 [PR메시지](https://github.com/Wanted-PreOnboarding-Team-8/pre-onboarding-9th-2-8/pulls)를 활용하여 문서화하였습니다.
 
+<br/>
+
 ## My Part
 
 ### Features
@@ -30,6 +34,8 @@
 
 ### Issues
 - [기술 스택 선정에 관하여: 상태관리 라이브러리](https://github.com/Wanted-PreOnboarding-Team-8/pre-onboarding-9th-2-8/issues/7)
+
+<br/>
 
 ## Team History
 
@@ -65,6 +71,8 @@
 
 - **Mar 7, 2023**  　|　[기술 스택 선정에 관하여: 상태관리 라이브러리](https://github.com/Wanted-PreOnboarding-Team-8/pre-onboarding-9th-2-8/issues/7)
 
+<br/>
+
 ## 설치 및 실행 가이드
 
 #### Install
@@ -85,11 +93,15 @@ npm run build
 npm start
 ```
 
+<br/>
+
 ## 기능
 - PLP, PDP 여행 상품 정보
 - CRUD 예약 상품 장바구니 (구매 수량 변경)
 - 가격, 지역 별 필터링 및 다중 필터링
 - 총 결제액, 총 상품 개수를 계산
+
+<br/>
 
 ## 기술 스택
 
@@ -102,12 +114,16 @@ npm start
 - emotion
 - craco 
 
+<br/>
+
 ## 협업 툴
 
 - Discord
 - Notion
 - Github
 - Figma
+
+<br/>
 
 ## DEMO
 
@@ -123,7 +139,9 @@ npm start
 
 ![](https://velog.velcdn.com/images/hyorimm/post/bad2bf0e-01f8-4927-a69c-a284c8dc62b1/image.gif)
 
-## 🗂️ 파일 구조
+<br/>
+
+## 파일 구조
 
 ```
 src
@@ -142,6 +160,8 @@ src
    ┗ slices
 
 ```
+
+<br/>
 
 ## 팀원 소개
 
